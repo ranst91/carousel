@@ -19,9 +19,11 @@ var config = {
         vendor: 'bower_components/**/**.min.js',
         css: [
             'bower_components/**/**.min.css',
-            'src/css/style.css'
+            // 'bower_components/bootstrap/css/bootstrap.css',
+            // 'src/css/style.css'
             //Add more CSS files here, as you create them for your app!
         ],
+        fonts: 'bower_components/**/fonts/*.*',
         sass: 'src/css/*.scss',
         dist: './dist',
         mainJS: './src/app.js'
@@ -59,16 +61,22 @@ gulp.task('views', function () {
 });
 
 gulp.task('sass', function () {
-   gulp.src(config.paths.sass)
-       .pipe(sass())
-       .pipe(gulp.dest(config.paths.sass))
+    return gulp.src(config.paths.sass)
+        .pipe(sass({outputStyle: 'compressed', sourceMap: true}).on('error', sass.logError))
+        .pipe(concat('bundle.css'))
+        .pipe(gulp.dest(config.paths.dist + '/css'))
 });
 
-//Concat any css into 1 file called bundle.css
-gulp.task('css', function () {
-   gulp.src(config.paths.css)
-       .pipe(concat('bundle.css'))
-       .pipe(gulp.dest(config.paths.dist + '/css'))
+gulp.task('css-vendors', function () {
+    return gulp.src(config.paths.css)
+        .pipe(concat('vendors.css'))
+        .pipe(gulp.dest(config.paths.dist + '/css'))
+});
+
+gulp.task('fonts', function () {
+    return gulp.src(config.paths.fonts)
+        .pipe(rename({dirname: ''}))
+        .pipe(gulp.dest(config.paths.dist + '/fonts'))
 });
 
 gulp.task('vendor', function () {
@@ -89,6 +97,8 @@ gulp.task('js', function () {
 //Watches the html and JS files for a change
 gulp.task('watch', function () {
     gulp.watch(config.paths.html, ['html']);
+    gulp.watch(config.paths.views, ['views']);
+    gulp.watch(config.paths.sass, ['sass']);
     gulp.watch(config.paths.js, ['js']);
 });
 
@@ -100,4 +110,4 @@ gulp.task('watch', function () {
  * 4. Set up a local dev server, Open a web browser the get the stuff running
  * 5. Watch for any real time changes
  */
-gulp.task('default', ['html', 'views', 'sass', 'css', 'vendor', 'js', 'open', 'watch']);
+gulp.task('default', ['html', 'views', 'css-vendors','fonts', 'sass', 'vendor', 'js', 'open', 'watch']);
