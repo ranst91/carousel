@@ -1,16 +1,60 @@
-.navigation {
-  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+//body {
+//  background: black;
+//}
+//
+//.carousel-container {
+//  margin-top:50px;
+//  border: 2px solid transparent;
+//  -moz-border-image: -moz-linear-gradient(left, #000 0%, #868686  50%, #000 100%);
+//  -webkit-border-image: -webkit-linear-gradient(left, #000 0%, #868686  50%, #000 100%);
+//  border-image: linear-gradient(to right, #000 0%, #868686  50%, #000 100%);
+//  border-image-slice: 1;
+//  border-left: none;
+//  border-right: none;
+//  -webkit-box-shadow: 0px -31px 43px -38px rgba(255,255,255,0.75);
+//  -moz-box-shadow: 0px -31px 43px -38px rgba(255,255,255,0.75);
+//  box-shadow: 0px 25px 90px -38px rgba(255,255,255,0.75), 0px -25px 90px -38px rgba(255,255,255,0.75);;
+//}
+
+//.carousel-container {
+//  margin-top:50px;
+//  border: 2px solid transparent;
+//  -moz-border-image: -moz-linear-gradient(left, #000 0%, #868686  50%, #000 100%);
+//  -webkit-border-image: -webkit-linear-gradient(left, #000 0%, #868686  50%, #000 100%);
+//  border-image: linear-gradient(to right, #000 0%, #868686  50%, #000 100%);
+//  border-image-slice: 1;
+//  border-left: none;
+//  border-right: none;
+//  -webkit-box-shadow: 0px -31px 43px -38px rgba(255,255,255,0.75);
+//  -moz-box-shadow: 0px -31px 43px -38px rgba(255,255,255,0.75);
+//  box-shadow: 0px 25px 90px -38px rgba(255,255,255,0.75), 0px -25px 90px -38px rgba(255,255,255,0.75);;
+//}
+
+.carousel-container {
+  position: relative;
+  width: 220px;
+  height: 170px;
+  margin: 20px 10px;
+  background: gray;
+  border-radius: 50% / 10%;
+  color: white;
+  text-align: center;
+  text-indent: .1em;
+  padding-top: 10px;
+}
+.carousel-container:before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background: gray;
+  border-radius: 5% / 50%;
 }
 
-.box {
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-  box-shadow: 0 1px 2px rgba(0,0,0,.1);
-  &__head {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    text-align: center;
-  }
-  &__body {
-    height: 500px;
-  }
+.carousel-image {
+  margin: auto;
+  width: 200px;
+  height: 150px;
 }

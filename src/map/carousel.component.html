@@ -1,20 +1,13 @@
-<div id="carouselGifs" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselGifs" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselGifs" data-slide-to="1"></li>
-        <li data-target="#carouselGifs" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item" ng-class='{active:$first}' ng-repeat="img in vm.gifs track by $index">
-            <img class="d-block img-fluid" ng-src="{{img}}" alt="slide-{{$index}}">
+<div class="shade"></div>
+<div class="carousel-container">
+    <div uib-carousel active="vm.active" interval="vm.interval" no-wrap="vm.noWrapSlides">
+        <div uib-slide ng-repeat="slide in vm.slides track by $index" index="$index">
+            <img ng-src="{{slide}}" class="carousel-image">
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselGifs" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselGifs" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <button type="button" class="btn btn-info" ng-click="vm.onAdd()">Add Slide</button>
+    </div>
 </div>

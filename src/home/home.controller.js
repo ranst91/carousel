@@ -6,25 +6,20 @@
     function HomeController(DataService) {
         let vm = this;
         vm.images = [];
-
-        getImages();
         ////////////
-
         /**
          * Get markers from the charge points API (chargepoints.json)
          */
-        function getImages(){
-            let amount = 10;
-
+        vm.getImages = function () {
+            if (vm.images > 10)
+                return;
             DataService.getRandomGif().then(img => {
                 vm.images.push(img);
             });
-            DataService.getRandomGif().then(img => {
-                vm.images.push(img);
-            });
-            DataService.getRandomGif().then(img => {
-                vm.images.push(img);
-            });
+        };
+        function initController() {
+            vm.getImages();
         }
+        initController();
     }
 })();

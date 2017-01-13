@@ -4,11 +4,15 @@
         .component('carousel', {
             templateUrl: 'views/carousel.component.html',
             bindings: {
-                gifs: '<'
+                slides: '<',
+                onAdd: '&'
             },
             controllerAs: 'vm',
             controller: function () {
                 let vm = this;
+                vm.myInterval = 5000;
+                vm.noWrapSlides = false;
+                vm.active = 0;
             }
         });
 })();
