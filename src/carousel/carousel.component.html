@@ -1,0 +1,13 @@
+<div class="shade"></div>
+<div class="carousel-container">
+    <div uib-carousel active="vm.active" interval="vm.interval" no-wrap="vm.noWrapSlides">
+        <div uib-slide ng-repeat="slide in vm.slides track by $index" class="slide" index="$index">
+            <img ng-src="{{slide}}" class="carousel-image">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 button-board">
+        <button type="button" class="btn" ng-click="vm.onAdd()">Add Slide</button>
+    </div>
+</div>

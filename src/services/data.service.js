@@ -23,7 +23,7 @@
                 method: 'GET'
             }).then(res => {
                 let images = res.data.data;
-                return images.fixed_width_downsampled_url;
+                return images.fixed_height_downsampled_url;
             });
         }
     }
